@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_date: 2018-08-21
+  player_one: MyString
+  player_two: MyString
+  winner: MyString
+
+two:
+  end_date: 2018-08-21
+  player_one: MyString
+  player_two: MyString
+  winner: MyString

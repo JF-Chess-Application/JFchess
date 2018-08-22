@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  game_id: 1
+  user_id: 1
+  moved_from_x: MyString
+  moved_from_y: MyString
+  moved_to_x: MyString
+  moved_to_y: MyString
+
+two:
+  name: MyString
+  game_id: 1
+  user_id: 1
+  moved_from_x: MyString
+  moved_from_y: MyString
+  moved_to_x: MyString
+  moved_to_y: MyString
