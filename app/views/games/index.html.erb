@@ -1,1 +1,10 @@
-<h1> New Game </h1> 
+<h3>Games Index</h3>
+<%= link_to 'new', new_game_path %>
+<br>
+<% @games.each do |game| %>
+  <%= game.name %>
+  <%= link_to 'show', game_path(game) %>
+  <%= link_to 'edit', edit_game_path(game) %>
+  <%= link_to 'delete', game, method: :delete %>
+  <br>
+<% end %>
