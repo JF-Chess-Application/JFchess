@@ -6,10 +6,10 @@
   <%= link_to 'show', game_path(game) %>
   <%= link_to 'edit', edit_game_path(game) %>
   <%= link_to 'delete', game, method: :delete %>
-	<%= if @games.available != nil %>
-	  <%= @games.available.each do |game| %>
+	<% if @games.available != nil %>
+	  <% @games.available.each do |game| %>
 	  	# support joinging a game logic goes here
-	  <%= end %>
-	<%= end %>
+	  <% end %>
+	<% end %>
   <br>
 <% end %>
