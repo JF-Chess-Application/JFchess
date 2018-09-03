@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @games = Game.all
@@ -19,12 +20,16 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+
+    if @game.user_id == current_user.id
+      return render plain: 'You are already in this game', status: :forbidden
+    end
   end
 
   def update
     @game = Game.find(params[:id])
     @game.update_attributes(game_params)   
-    redirect_to games_path
+    redirect_to game_path(@game)
   end
 
   def destroy
@@ -36,6 +41,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name)
+    params.require(:game).permit(:name, :opponent)
   end
 end
