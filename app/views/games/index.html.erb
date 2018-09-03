@@ -14,8 +14,13 @@
     Game No. <%= game.id %> against User <%= game.user_id %> is available!
     <% if current_user && current_user.id != game.user_id %>
       - <%= link_to 'Join this game', edit_game_path(game), class: 'btn btn-primary' %>
-    <% else %>
+      <br />
+    <% elsif current_user && (current_user.id == game.user_id || current_user.id == opponent) %>
+      - You are already in this game
+      <br />
+    <% elsif current_user == nil %>
       - <%= link_to 'Log in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to play.
+      <br />
     <% end %>
   <% end %>
 <% end %>
