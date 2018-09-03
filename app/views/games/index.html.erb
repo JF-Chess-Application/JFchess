@@ -6,11 +6,13 @@
   <%= link_to 'show', game_path(game) %>
   <%= link_to 'edit', edit_game_path(game) %>
   <%= link_to 'delete', game, method: :delete %>
-	<% end %>
+<% end %>
 <br>
-	<% if @games.available != nil %>
-	  <% @games.available.each do |game| %>
-	  
-	  	# support joinging a game logic goes here
-	  <% end %>
+<h3>Join a Game</h3>
+<% if @games.available != nil %>
+  <% @games.available.each do |game| %>
+    <%= 'Game No. #{game.id} against User #{game.user_id} is available!' %>
+    <% if current_user && current_user.id != game.user_id %>
+    - <%= link_to 'Join this game', edit_game_path(game), class: 'btn btn-primary' %>
+  <% end %>
 <% end %>

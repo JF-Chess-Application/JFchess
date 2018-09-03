@@ -1,6 +1,7 @@
-<h3>Edit Game</h3>
+<h3>Join a Game</h3>
 
 <%= simple_form_for @game do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit %>
+  <%= f.input :name, required: false, label: 'Give this game a name' %>
+  <%= f.input :opponent, required: true, label: 'Sign yourself up as the opponent', value: current_user %>
+  <%= f.button :submit, "Join the game!" %>
 <% end %>
