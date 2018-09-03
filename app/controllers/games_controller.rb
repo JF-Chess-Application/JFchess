@@ -21,6 +21,7 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
 
+    # prevent users from signing up for games they created
     if @game.user_id == current_user.id
       return render plain: 'You are already in this game', status: :forbidden
     end
@@ -28,7 +29,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update_attributes(game_params)   
+    @game.update_attributes(game_params)
     redirect_to game_path(@game)
   end
 
