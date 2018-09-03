@@ -62,54 +62,50 @@ class Piece < ApplicationRecord
     if x > position_x && y > position_y
       x_temp = position_x + 1
       y_temp = position_y + 1
-      while x_temp <= x && y_temp <= y
+      until x_temp == x && y_temp == y
         if check_temporary_values(x_temp, y_temp)
           return true
-        else
-          return false
         end
         x_temp += 1
         y_temp += 1
       end
+      return false
     # if desired move is diagonal up and to the left
     elsif x < position_x && y > position_y
       x_temp = position_x - 1
       y_temp = position_y + 1
-      while x_temp >= x && y_temp <= y
+      until x_temp == x && y_temp == y
         if check_temporary_values(x_temp, y_temp)
           return true
-        else
-          return false
         end
         x_temp -= 1
         y_temp += 1
       end
+      return false
     # if desired move is diagonal down and to the right
     elsif x > position_x && y < position_y
       x_temp = position_x + 1
       y_temp = position_y - 1
-      while x_temp <= x && y_temp >= y
+      until x_temp == x && y_temp == y
         if check_temporary_values(x_temp, y_temp)
           return true
-        else
-          return false
         end
         x_temp += 1
         y_temp -= 1
       end
+      return false
     # if desired move is diagonal down to the left
     elsif x < position_x && y < position_y
       x_temp = position_x - 1
       y_temp = position_y - 1
-      while x_temp >= x && y_temp >= y
+      until x_temp == x && y_temp == y
         if check_temporary_values(x_temp, y_temp)
           return true
-        else
-          return false
         end
-        x_temp += 1
+        x_temp -= 1
         y_temp -= 1
       end
+      return false
     end
   end
 
