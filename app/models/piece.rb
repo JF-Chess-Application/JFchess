@@ -81,4 +81,30 @@ class Piece < ApplicationRecord
       return check_diagonal_obstructions(x, y)
     end
   end
+
+  # Remove the piece from the board
+  def remove_piece(piece) 
+    piece.update_attributes(status: :captured)
+  end
+
+  # Move a piece to the designated location
+  def move_to(x, y)
+
+    if game.piece_in_space?(x, y)
+      other_piece = Piece.find_by(position_x: x, position_y: y)
+
+      # If piece belongs to opponent, remove it from the board
+      if other_piece.user.id == game.opponent
+        remove_piece(other_piece)
+      end
+
+      # If piece belongs to player, the move should fail
+      if other_piece.user.id == game.user_id
+        return 'Move failed'
+      end
+
+    end
+    # Move the piece to the designated coordinates
+    self.update_attributes(position_x: x, position_y: y)
+  end
 end
