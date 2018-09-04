@@ -51,18 +51,62 @@ class Piece < ApplicationRecord
     return false
   end
 
-  # check if a diagnol move is blocked
+  # moved this call into a separate method for DRY reasons
+  def check_temporary_values(x_temp, y_temp)
+    game.piece_in_space?(x_temp, y_temp)
+  end
+
+  # check if a diagonal move is blocked
   def check_diagonal_obstructions(x, y)
-    # for each value x in the x_range *combined with* with each value y from the y_range, check
-    # if there is a piece in the corresponding space
-    x_range(x).each do |x|
-      y_range(y).each do |y|
-        if game.piece_in_space?(x, y)
+    # if desired move is diagonal up and to the right
+    if x > position_x && y > position_y
+      x_temp = position_x + 1
+      y_temp = position_y + 1
+      until x_temp == x && y_temp == y
+        if check_temporary_values(x_temp, y_temp)
           return true
         end
+        x_temp += 1
+        y_temp += 1
       end
+      return false
+    # if desired move is diagonal up and to the left
+    elsif x < position_x && y > position_y
+      x_temp = position_x - 1
+      y_temp = position_y + 1
+      until x_temp == x && y_temp == y
+        if check_temporary_values(x_temp, y_temp)
+          return true
+        end
+        x_temp -= 1
+        y_temp += 1
+      end
+      return false
+    # if desired move is diagonal down and to the right
+    elsif x > position_x && y < position_y
+      x_temp = position_x + 1
+      y_temp = position_y - 1
+      until x_temp == x && y_temp == y
+        if check_temporary_values(x_temp, y_temp)
+          return true
+        end
+        x_temp += 1
+        y_temp -= 1
+      end
+      return false
+    # if desired move is diagonal down to the left
+    elsif x < position_x && y < position_y
+      x_temp = position_x - 1
+      y_temp = position_y - 1
+      until x_temp == x && y_temp == y
+        if check_temporary_values(x_temp, y_temp)
+          return true
+        end
+        x_temp -= 1
+        y_temp -= 1
+      end
+      return false
     end
-    return false
   end
 
   def is_obstructed?(x, y)
