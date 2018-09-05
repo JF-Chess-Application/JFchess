@@ -94,12 +94,12 @@ class Piece < ApplicationRecord
       other_piece = Piece.find_by(position_x: x, position_y: y)
 
       # If piece belongs to opponent, remove it from the board
-      if other_piece.user.id == game.opponent
+      if other_piece.user_id == game.opponent
         remove_piece(other_piece)
       end
 
       # If piece belongs to player, the move should fail
-      if other_piece.user.id == game.user_id
+      if other_piece.user_id == game.user_id
         return 'Move failed'
       end
 
