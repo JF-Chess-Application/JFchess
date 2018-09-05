@@ -1,7 +1,6 @@
 <h3>New Game</h3>
 
 <%= simple_form_for @game do |f| %>
-  <%= f.input :user_id, :input_html => { :value => current_user.id }, label: 'Add yourself to a new game', required: true %>
   <%= f.input :name %>
   <%= f.button :submit %>
 <% end %>
