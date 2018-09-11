@@ -10,7 +10,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(game_params.merge(user_id: current_user.id))
+    @opponent = User.create(email: 'opponent@example.com', password: 'password')
+    @game = Game.create(game_params.merge(user_id: current_user.id, opponent: @opponent.id))
     redirect_to games_path
   end
 
