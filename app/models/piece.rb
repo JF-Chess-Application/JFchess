@@ -138,17 +138,21 @@ class Piece < ApplicationRecord
       other_piece = Piece.find_by(position_x: x, position_y: y)
 
       # If piece belongs to opponent, remove it from the board
-      if other_piece.user_id == game.opponent
+      if other_piece.user_id != current_user
         remove_piece(other_piece)
       end
 
       # If piece belongs to player, the move should fail
-      if other_piece.user_id == game.user_id
+      if other_piece.user_id == current_user
         return 'Move failed'
       end
 
     end
     # Move the piece to the designated coordinates
     self.update_attributes(position_x: x, position_y: y)
+
+    # update the move_count
+    new_move_count = self.move_count + 1
+    self.update_attributes(move_count: new_move_count)
   end
 end

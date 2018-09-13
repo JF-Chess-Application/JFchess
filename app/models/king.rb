@@ -7,10 +7,11 @@ class King < Piece
     elsif x == position_x && (y == position_y + 1 || y == position_y - 1)
       return true
     # check if it's a valid diagonal move
-    elsif (x == position_x + 1 && y == position_y +1) || (x == position_x - 1 && y == position_y + 1) || (x == position_x - 1 && y == position_y - 1) || (x == position_x + 1 && y == position_y - 1)
+    elsif (x == position_x + 1 && y == position_y + 1) || (x == position_x - 1 && y == position_y + 1) || (x == position_x - 1 && y == position_y - 1) || (x == position_x + 1 && y == position_y - 1)
       return true
     # if none of the above, false
     else
       return false
     end
+  end
 end

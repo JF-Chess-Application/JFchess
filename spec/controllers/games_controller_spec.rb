@@ -11,6 +11,7 @@ RSpec.describe GamesController, type: :controller do
       game = Game.last
       expect(game.opponent).to eq(user2.id)
       expect(game.pieces.count).to eq(32)
+      expect(game.pieces.last.color).to eq("white")
     end
   end
 end
