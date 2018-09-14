@@ -5,8 +5,9 @@ class PiecesController < ApplicationController
 
 	def update
 		@piece = Piece.find(params[:id])
-		if @piece.valid_move?(params[:x_coord, :y_coord]) && @piece.space_empty?
-			@piece.update_attributes(params[:id])
+		@game = Game.find(params[:id])
+		if @piece.valid_move?([:x, :y]) && @game(piece_in_space?(x, y) == false)
+			@piece.update_attributes(position_x: x, position_y: y)
 		end	
 		redirect_to game_path(@game)
 	end
