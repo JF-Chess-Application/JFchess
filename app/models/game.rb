@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :user
   has_many :pieces, dependent: :destroy
+  has_many :captured_pieces, dependent: :destroy
   scope :available, -> { where(opponent: nil) }
   after_create :populate_board!
   # one potential limitation of this method is that pieces will only be populated if the game has a valid user_id AND an opponent

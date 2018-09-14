@@ -6,9 +6,9 @@ RSpec.describe Piece, type: :model do
     @user = User.create(email: 'bob@example.com', password: 'password')
     @opponent = User.create(email: 'opponent@example.com', password: 'password')
     @game = @user.games.create(opponent: @opponent.id)
-    @piece = @game.pieces.create(user_id: @user.id, position_x: 1, position_y: 1, status: :onboard)
-    @opponents_piece = @game.pieces.create(user_id: @opponent.id, position_x: 5, position_y: 5, status: :onboard)
-    @other_piece = @game.pieces.create(user_id: @user.id, position_x: 4, position_y: 4, status: :onboard)
+    @piece = @user.pieces.first
+    @opponents_piece = @opponent.pieces.first
+    @other_piece = @user.pieces.last
   end
 
   it "move_to should move if square is empty" do 
@@ -30,9 +30,10 @@ RSpec.describe Piece, type: :model do
     expect(@piece.position_x).to eq(@opponents_piece.position_x)
     expect(@piece.position_y).to eq(@opponents_piece.position_y)
 
-    # Check that opponent's piece has been captured
-    @opponents_piece.reload
-    expect(@opponents_piece.status).to eq("captured")
+    # Check that piece moved to captured pieces
+    expect(@game.captured_pieces.count).to eq(1)
+    expect(@game.pieces.count).to eq(31)
+
   end
 
   it "move_to should fail if other piece belongs to user" do 
@@ -48,8 +49,5 @@ RSpec.describe Piece, type: :model do
     expect(@piece.position_x).to eq(position_x)
     expect(@piece.position_y).to eq(position_y)
 
-    # Check that the other piece is still onboard
-    @other_piece.reload
-    expect(@other_piece.status).to eq("onboard")
   end
 end

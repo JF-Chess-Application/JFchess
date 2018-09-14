@@ -128,7 +128,12 @@ class Piece < ApplicationRecord
 
   # Remove the piece from the board
   def remove_piece(piece) 
-    piece.update_attributes(status: :captured)
+    CapturedPiece.create(game_id:    piece.game_id, 
+                         user_id:    piece.user_id,
+                         name:       piece.name,
+                         move_count: piece.move_count,
+                         color:      piece.color)
+    piece.destroy
   end
 
   # Move a piece to the designated location
