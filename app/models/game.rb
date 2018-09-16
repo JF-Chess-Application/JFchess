@@ -5,7 +5,7 @@ class Game < ApplicationRecord
   scope :available, -> { where(opponent: nil) }
   after_create :populate_black_pieces!
   after_update :populate_white_pieces!
-  # one potential limitation of this method is that pieces will only be populated if the game has a valid user_id AND an opponent
+
   def populate_black_pieces!
     # QUEENS - the user who created the game will be black, the opponent will be white
     Queen.create(game_id: id, user_id: user_id, position_x: 3, position_y: 7, color: "black", name: "black queen")
@@ -66,15 +66,14 @@ class Game < ApplicationRecord
 
   # define a boolean method that determines of the game is in a state of check
   def in_check?
-    white_king_x = self.King.where(color: 'white').position_x
-    white_king_y = self.King.where(color: 'white').position_y
-    black_king_x = self.King.where(color: 'black').position_x
-    black_king_y = self.King.where(color: 'black').position_y
-
+    white_king = King.where(game_id: id, color: 'white').inspect
+    black_king = King.where(game_id: id, color: 'black').inspect
+    puts "white king is #{white_king}"
+    puts "black king is #{black_king}"
     # HELPER METHOD: CHECK FOR THREATENED KINGS
     # 1st condition (must be true): There is at least one piece on the board who could "capture" either king
     # if there is any piece whose valid_move? method returns true to a space with a King in it
-      # loop through all the pieces
+      # loop through all the pieces in the game whose status is nil
       # pieces.each do |piece|
         # if a black piece has a valid_move?(white_king_x, white_king_y) || # if a white piece has a valid_move(black_king_x, black_king_y)
         # return true
