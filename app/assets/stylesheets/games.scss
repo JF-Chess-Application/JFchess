@@ -21,7 +21,8 @@ body {
   display: table-cell;
   vertical-align:middle;
   &:hover {
-    border: 2px solid red;
+    background-color: #99ff8c;
+    opacity: 0.6;
   }
 }
 
