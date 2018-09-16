@@ -20,7 +20,7 @@ body {
   text-align:center;
   display: table-cell;
   vertical-align:middle;
-  &:hover {
+  &:active {
     background-color: #99ff8c;
     opacity: 0.6;
   }
