@@ -35,10 +35,10 @@ module GamesHelper
           return 9814.chr(Encoding::UTF_8)
         when piece.name == 'white rook 2'
           return 9814.chr(Encoding::UTF_8)
-        when piece.name.include?('white pawn')
-          return 9817.chr(Encoding::UTF_8)
-        when piece.name.include?('black pawn')
-          return 9823.chr(Encoding::UTF_8)
+        # when piece.name.include?('white pawn')
+        #   return 9817.chr(Encoding::UTF_8)
+        # when piece.name.include?('black pawn')
+        #   return 9823.chr(Encoding::UTF_8)
       end
     else
       return '_'

@@ -1,7 +1,7 @@
 class King < Piece
   def valid_move?(x, y)
 
-    if self.is_obstructed(x, y)
+    if self.is_obstructed?(x, y)
       return false
     end
 
