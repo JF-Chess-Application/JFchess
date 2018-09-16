@@ -10,8 +10,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @opponent = User.create(email: 'opponent@example.com', password: 'password')
-    @game = Game.create(game_params.merge(user_id: current_user.id, opponent: @opponent.id))
+    @game = Game.create(game_params.merge(user_id: current_user.id))
     redirect_to games_path
   end
 
@@ -29,7 +28,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update_attributes(game_params)   
+    @game.update_attributes(game_params.merge(opponent: current_user.id))   
     redirect_to game_path(@game)
   end
 
