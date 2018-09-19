@@ -1,7 +1,6 @@
 module GamesHelper
   def render_piece(position_x, position_y)
     piece = Piece.find_by(position_x: position_x, position_y: position_y)
-    # return 9822.chr(Encoding::UTF_8)
     if piece
       case
         when piece.name == 'black queen'
@@ -41,6 +40,9 @@ module GamesHelper
         when piece.name.include?('black pawn')
           return 9823.chr(Encoding::UTF_8)
       end
+    else
+      return '_'
     end
+
   end
 end

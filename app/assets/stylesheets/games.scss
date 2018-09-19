@@ -22,6 +22,10 @@ body {
   vertical-align:middle;
 }
 
+.highlight {
+ background-color: lightblue;
+}
+
 .row:nth-child(even) .square:nth-child(odd),
 .row:nth-child(odd)  .square:nth-child(even) {
   background: #917851;
