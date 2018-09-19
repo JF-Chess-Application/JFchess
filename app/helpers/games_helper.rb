@@ -35,10 +35,38 @@ module GamesHelper
           return 9814.chr(Encoding::UTF_8)
         when piece.name == 'white rook 2'
           return 9814.chr(Encoding::UTF_8)
-        # when piece.name.include?('white pawn')
-        #   return 9817.chr(Encoding::UTF_8)
-        # when piece.name.include?('black pawn')
-        #   return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 1'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 2'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 3'
+          return 9817.chr(Encoding::UTF_8) 
+        when piece.name == 'white pawn 4'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 5'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 6'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 7'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'white pawn 8'
+          return 9817.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 1'
+          return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 2'
+          return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 3'
+          return 9823.chr(Encoding::UTF_8) 
+        when piece.name == 'black pawn 4'
+          return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 5'
+          return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 6'
+          return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 7'
+          return 9823.chr(Encoding::UTF_8)
+        when piece.name == 'black pawn 8'
+          return 9823.chr(Encoding::UTF_8)
       end
     else
       return '_'
