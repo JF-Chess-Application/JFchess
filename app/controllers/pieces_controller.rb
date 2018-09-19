@@ -1,14 +1,15 @@
 class PiecesController < ApplicationController
-	def show 
+	def edit 
 		@piece = Piece.find(params[:id])
 	end
 
 	def update
 		@piece = Piece.find(params[:id])
-		@game = Game.find(params[:id])
-		if @piece.valid_move?([:x, :y]) && @game(piece_in_space?(x, y) == false)
-			@piece.update_attributes(position_x: x, position_y: y)
-		end	
-		redirect_to game_path(@game)
+		position_x = params[:position_x]
+		position_y = params[:position_y]
+		@piece.update_attributes(position_x: position_x, position_y: position_y)
+		
+		@game = Game.find(@piece.game_id)
+		redirect_to game_path(game)
 	end
 end
