@@ -1,92 +1,28 @@
 <div class="main">
   <div class="left">Filler</div>
   <div class="board-container">
-
     <div class="board">
-       <div class="row" id="row-8">
-          <div class="square" id="0-7"><%= render_piece(0,7) %></div>
-          <div class="square" id="1-7"><%= render_piece(1,7) %></div>
-          <div class="square" id="2-7"><%= render_piece(2,7) %></div>
-          <div class="square" id="3-7"><%= render_piece(3,7) %></div>
-          <div class="square" id="4-7"><%= render_piece(4,7) %></div>
-          <div class="square" id="5-7"><%= render_piece(5,7) %></div>
-          <div class="square" id="6-7"><%= render_piece(6,7) %></div>
-          <div class="square" id="7-7"><%= render_piece(7,7) %></div>
-       </div>
-       <div class="row" id="row-7">
-          <div class="square" id="0-6"><%= render_piece(0,6) %></div>
-          <div class="square" id="1-6"><%= render_piece(1,6) %></div>
-          <div class="square" id="2-6"><%= render_piece(2,6) %></div>
-          <div class="square" id="3-6"><%= render_piece(3,6) %></div>
-          <div class="square" id="4-6"><%= render_piece(4,6) %></div>
-          <div class="square" id="5-6"><%= render_piece(5,6) %></div>
-          <div class="square" id="6-6"><%= render_piece(6,6) %></div>
-          <div class="square" id="7-6"><%= render_piece(7,6) %></div>
-       </div>
-       <div class="row" id="row-6">
-          <div class="square" id="0-5"><%= render_piece(0,5) %></div>
-          <div class="square" id="1-5"><%= render_piece(1,5) %></div>
-          <div class="square" id="2-5"><%= render_piece(2,5) %></div>
-          <div class="square" id="3-5"><%= render_piece(3,5) %></div>
-          <div class="square" id="4-5"><%= render_piece(4,5) %></div>
-          <div class="square" id="5-5"><%= render_piece(5,5) %></div>
-          <div class="square" id="6-5"><%= render_piece(6,5) %></div>
-          <div class="square" id="7-5"><%= render_piece(7,5) %></div>
-       </div>
-       <div class="row" id="row-5">
-          <div class="square" id="0-4"><%= render_piece(0,4) %></div>
-          <div class="square" id="1-4"><%= render_piece(1,4) %></div>
-          <div class="square" id="2-4"><%= render_piece(2,4) %></div>
-          <div class="square" id="3-4"><%= render_piece(3,4) %></div>
-          <div class="square" id="4-4"><%= render_piece(4,4) %></div>
-          <div class="square" id="5-4"><%= render_piece(5,4) %></div>
-          <div class="square" id="6-4"><%= render_piece(6,4) %></div>
-          <div class="square" id="7-4"><%= render_piece(7,4) %></div>
-       </div>
-       <div class="row" id="row-4">
-          <div class="square" id="0-3"><%= render_piece(0,3) %></div>
-          <div class="square" id="1-3"><%= render_piece(1,3) %></div>
-          <div class="square" id="2-3"><%= render_piece(2,3) %></div>
-          <div class="square" id="3-3"><%= render_piece(3,3) %></div>
-          <div class="square" id="4-3"><%= render_piece(4,3) %></div>
-          <div class="square" id="5-3"><%= render_piece(5,3) %></div>
-          <div class="square" id="6-3"><%= render_piece(6,3) %></div>
-          <div class="square" id="7-3"><%= render_piece(7,3) %></div>
-       </div>
-       <div class="row" id="row-3">
-          <div class="square" id="0-2"><%= render_piece(0,2) %></div>
-          <div class="square" id="1-2"><%= render_piece(1,2) %></div>
-          <div class="square" id="2-2"><%= render_piece(2,2) %></div>
-          <div class="square" id="3-2"><%= render_piece(3,2) %></div>
-          <div class="square" id="4-2"><%= render_piece(4,2) %></div>
-          <div class="square" id="5-2"><%= render_piece(5,2) %></div>
-          <div class="square" id="6-2"><%= render_piece(6,2) %></div>
-          <div class="square" id="7-2"><%= render_piece(7,2) %></div>
-       </div>
-       <div class="row" id="row-2">
-          <div class="square" id="0-1"><%= render_piece(0,1) %></div>
-          <div class="square" id="1-1"><%= render_piece(1,1) %></div>
-          <div class="square" id="2-1"><%= render_piece(2,1) %></div>
-          <div class="square" id="3-1"><%= render_piece(3,1) %></div>
-          <div class="square" id="4-1"><%= render_piece(4,1) %></div>
-          <div class="square" id="5-1"><%= render_piece(5,1) %></div>
-          <div class="square" id="6-1"><%= render_piece(6,1) %></div>
-          <div class="square" id="7-1"><%= render_piece(7,1) %></div>
 
-       </div>
-       <div class="row" id="row-1">
-          <div class="square" id="0-0"><%= render_piece(0,0) %></div>
-          <div class="square" id="1-0"><%= render_piece(1,0) %></div>
-          <div class="square" id="2-0"><%= render_piece(2,0) %></div>
-          <div class="square" id="3-0"><%= render_piece(3,0) %></div>
-          <div class="square" id="4-0"><%= render_piece(4,0) %></div>
-          <div class="square" id="5-0"><%= render_piece(5,0) %></div>
-          <div class="square" id="6-0"><%= render_piece(6,0) %></div>
-          <div class="square" id="7-0"><%= render_piece(7,0) %></div>
-       </div>
+      <% 8.times do |i| %>
+        <div class="row">
+          <% 8.times do |j| %>
+            <div class="square" id="<%= j %>-<%= 7-i %>">
+              <% piece = @game.pieces.find_by(position_x: j, position_y: 7-i) %>
+              <% if piece %>
+                <%= link_to edit_piece_path(piece) do %>
+                  <%= render_piece(piece.position_x, piece.position_y) %>
+                <% end %>
+              <% end %>
+                
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
     </div>
-
   </div>
   <div class="right">Filler</div>
 </div>
+
+<h3><%= params %></h3>
 
