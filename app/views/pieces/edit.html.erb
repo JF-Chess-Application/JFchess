@@ -6,7 +6,12 @@
       <% 8.times do |i| %>
         <div class="row">
           <% 8.times do |j| %>
-            <div class="square" id="<%= j %>-<%= 7-i %>">
+            <% if @piece.position_x == j && @piece.position_y == 7-i %>
+              <% square_class = 'highlight' %>
+            <% else %>
+              <% square_class = '' %>
+            <% end %>
+            <div class="square <%= square_class %>" id="<%= j %>-<%= 7-i %>">
               <%= link_to piece_path(@piece, position_x: j, position_y: 7-i), method: :put do %>
                 <%= render_piece(j, 7-i) %>  
               <% end %>
