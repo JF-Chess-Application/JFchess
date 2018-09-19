@@ -19,4 +19,42 @@ class King < Piece
       return false
     end
   end
+
+  def can_castle?(rook)
+
+    # Check that neither the king nor rook have moved
+    if self.move_count > 0 || rook.move_count > 0
+      return false
+    end
+
+    # Check that there are no obstructions
+    if is_obstructed?(rook.position_x, rook.position_y)
+      return false
+    end
+
+    return true
+  end
+
+  def castle!(rook)
+
+    if can_castle?(rook)
+      # Check if rook is king side
+      if rook.position_x == 7
+        update_attributes(position_x: 6)
+        rook.update_attributes(postiion_x: 5)
+
+      # Check if rook is queen side
+      elsif rook.position_x == 0
+        update_attributes(position_x: 2)
+        rook.update_attributes(position_x: 3)
+      end
+
+      # Set move count to 1
+      self.move_count = 1
+      rook.move_count = 1
+    else
+      return 'Move failed'
+    end
+    
+  end
 end
