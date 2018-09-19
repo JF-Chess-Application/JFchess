@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="left">Filler</div>
+  <div class="board-container">
+    <div class="board">
+
+      <% 8.times do |i| %>
+        <div class="row">
+          <% 8.times do |j| %>
+            <div class="square" id="<%= j %>-<%= 7-i %>">
+              <%= link_to piece_path(@piece, position_x: j, position_y: 7-i), method: :put do %>
+                <%= render_piece(j, 7-i) %>  
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="right">Filler</div>
+</div>
+
+<h3><%= params %></h3>
