@@ -9,7 +9,7 @@ class PiecesController < ApplicationController
 		position_y = params[:position_y]
 		@piece.update_attributes(position_x: position_x, position_y: position_y)
 		
-		@game = Game.find(params[:id])
+		@game = Game.find(@piece.game_id)
 		redirect_to game_path(@game)
 	end
 end
