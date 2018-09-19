@@ -20,10 +20,10 @@ body {
   text-align:center;
   display: table-cell;
   vertical-align:middle;
-  &:active {
-    background-color: #99ff8c;
-    opacity: 0.6;
-  }
+}
+
+.highlight {
+ background-color: lightblue;
 }
 
 .row:nth-child(even) .square:nth-child(odd),
