@@ -21,10 +21,6 @@ body {
   text-align:center;
   display: table-cell;
   vertical-align:middle;
-
-  &:hover {
-    border; 2px solid red;
-  }
 }
 
 .row:nth-child(even) .square:nth-child(odd),
