@@ -2,27 +2,86 @@
   <div class="left">Filler</div>
   <div class="board-container">
     <div class="board">
-
       <% 8.times do |i| %>
         <div class="row">
           <% 8.times do |j| %>
-            <div class="square" id="<%= j %>-<%= 7-i %>">
-              <% piece = @game.pieces.find_by(position_x: j, position_y: 7-i) %>
-              <% if piece %>
-                <%= link_to edit_piece_path(piece) do %>
-                  <%= render_piece(piece.position_x, piece.position_y) %>
-                <% end %>
-              <% end %>
-                
+            <div class="square" id="<%= j %>-<%= 7-i %>" 
+                 data-position_x='<%= j %>' 
+                 data-position_y='<%= 7-i %>'>
             </div>
           <% end %>
         </div>
       <% end %>
-
     </div>
   </div>
   <div class="right">Filler</div>
 </div>
 
-<h3><%= params %></h3>
+<script>
+
+  function renderPiece(piece) {
+    piecesCodeHash = {
+      'white king':   9812,
+      'white queen':  9813,
+      'white rook':   9814,
+      'white bishop': 9815,
+      'white knight': 9816,
+      'white pawn':   9817,
+      'black king':   9818,
+      'black queen':  9819,
+      'black rook':   9820,
+      'black bishop': 9821,
+      'black knight': 9822,
+      'black pawn':   9823
+    };
+    var pieceName = piece.name.replace(/[0-9]/g, '').trim();
+    var pieceCode = piecesCodeHash[pieceName];
+    return(String.fromCharCode(pieceCode));
+  }
+
+  function showBoard() {
+    var gameId = "<%= @game.id %>"
+    $.get(`/games/${gameId}/pieces`).success( function( data ) {
+      var pieces = data;
+      console.log(pieces);
+      $.each(pieces, function(index, piece) {
+        var square = $(`div[data-position_x="${piece.position_x}"][data-position_y="${piece.position_y}"]`);
+        var pieceElement = $('<div></div>');
+        pieceElement.addClass('piece');
+        pieceElement.attr('data-piece_id', piece.id);
+        pieceElement.text(renderPiece(piece));
+        
+        square.empty();
+        pieceElement.appendTo(square);
+        pieceElement.draggable({
+          containment: $('.board'),
+        });
+      });
+    });
+  }
+
+  $(function() {
+    $('.square').droppable({
+      drop: function(event, ui) {
+        var positionX = $(this).data().position_x;
+        var positionY = $(this).data().position_y;
+        var piece = ui.draggable;
+        var pieceId = piece.data().piece_id;
+        $.ajax({
+          type: 'PUT',
+          url: '/games/1/pieces/' + pieceId,
+          data: { position_x: positionX, position_y: positionY },
+          success: function() {
+            showBoard();
+            piece.remove();
+          }
+        });
+      }
+    });
+
+    showBoard();
+
+  });  
+</script>
+
 
