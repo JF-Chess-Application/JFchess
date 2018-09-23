@@ -92,7 +92,7 @@ class Game < ApplicationRecord
     return false
   end
 
-  # check? CONDITION 1: CHECK FOR THREATENED KINGS
+  # check? condition: CHECK FOR THREATENED KINGS
   def threatened_king?
     # if there is any piece whose valid_move? method returns true to a space with a King in it, return true
     if white_king_threatened? || black_king_threatened?
@@ -102,39 +102,36 @@ class Game < ApplicationRecord
     end
   end
 
-  # check? CONDITION 2: THREATENED KING CAN MOVE
-  # The threatened king can move into a different space where no pieces are currently able to capture it
+  # define a boolean method that determines of the game is in a state of check
+  def check?
+    if threatened_king?
+      return true
+    else
+      return false
+    end
+  end
+  
+  # checkmate? condition: THREATENED KING CAN'T MOVE
   def threatened_king_can_move?(x, y)
-    # these methods should check (1) that the king can make a move to a given x, y AND check each piece from the opposing player. If the king can make the move and an opponent's piece ALSO has a valid_move? to that space, the method should return false. 
-    # if the king CAN make a valid_move? to the desired x, y AND there is no opponent's piece with a valid_move? to that space, the method should return true
     if white_king_threatened?
       if white_king.valid_move?(x, y)
-        king_can_move = false
         black_pieces.each do |piece|
-          next if king_can_move
           if piece.valid_move?(x, y)
-            king_can_move = false
-          else
-            king_can_move = true
+            return false
           end
         end
+      return true
       end
-      return king_can_move
     end
 
     if black_king_threatened?
       if black_king.valid_move?(x, y)
-        king_can_move = false
         white_pieces.each do |piece|
-          # next if king_can_move
           if piece.valid_move?(x, y)
-            king_can_move = false
-            # return king_can_move
-          else
-            king_can_move = true
+            return false
           end
         end
-        return king_can_move
+      return true
       end
     end
   end
@@ -162,48 +159,33 @@ class Game < ApplicationRecord
     end
   end
 
-  # check? CONDITION 3: THE PIECE THREATENING THE KING CAN BE CAPTURED
-  # The piece threatening the king can be captured
+  # checkmate? CONDITION 3: THE PIECE THREATENING THE KING CANNOT BE CAPTURED
   def threat_is_capturable?
-    # if white_king_threatened?
-    #   threats.each do |threat|
-    #     black_pieces.each do |piece|
-    #       if piece.valid_move?(threat.position_x, threat.position_y)
-    #         return true
-    #       end
-    #       return false
-    #     end
-    #   end
-    # end
-
-    if black_king_threatened?
-      can_capture_threat = false
+    if white_king_threatened?
       white_pieces.each do |piece|
         threats.each do |threat|
-          next if can_capture_threat
           if piece.valid_move?(threat.position_x, threat.position_y)
-            can_capture_threat = true
-          else
-            can_capture_threat = false
+            return true
           end
         end
       end
-      return can_capture_threat
-    end
-  end
-
-  # check? CONDITION 4: CAN OBSTRUCT THE THREATENING PIECE'S MOVE
-  # There is a piece of the same color as the threatened king that can move between the threat and the king without causing another piece to threaten the king
-  def threat_is_obstructable?
-
-  end
-
-  # define a boolean method that determines of the game is in a state of check
-  def check?
-    if threatened_king? && (threatened_king_can_move? || threat_is_capturable? || threat_is_obstructable?)
-      return true
-    else
       return false
     end
+
+    if black_king_threatened?
+      black_pieces.each do |piece|
+        threats.each do |threat|
+          if piece.valid_move?(threat.position_x, threat.position_y)
+            return true
+          end
+        end
+      end
+      return false
+    end
+  end
+
+  # checkmate? CONDITION 4: CANNOT OBSTRUCT THE THREATENING PIECE'S MOVE
+  def threat_is_obstructable?
+
   end
 end
