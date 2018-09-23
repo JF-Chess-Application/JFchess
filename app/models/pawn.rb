@@ -18,8 +18,9 @@ class Pawn < Piece
 				end
 			# regardless of move_count, it is valid for a white pawn to move forward to position_y + 1 and one space to the left or right, then capture the piece_in_space (self.is_obstructed?(x, y) must == true)
 			elsif y == position_y + 1 && (x == position_x - 1 || x == position_x + 1)
-				if self.is_obstructed?(x, y)
-					move_to(x, y)
+				space_occupant = game.pieces.where(position_x: x, position_y: y, color: 'black')
+				if space_occupant
+					return true
 				else
 					return false
 				end
@@ -45,8 +46,9 @@ class Pawn < Piece
 				end
 			# regardless of move_count, it is valid for a black pawn can move forward to position_y - 1 and one space to the left or right to capture the piece_in_space (self.is_obstructed?(x, y) must == true)
 			elsif y == position_y - 1 && (x == position_x - 1 || x == position_x + 1)
-				if self.is_obstructed?(x, y)
-					move_to(x, y)
+				space_occupant = game.pieces.where(position_x: x, position_y: y, color: 'white')
+				if space_occupant
+					return true
 				else
 					return false
 				end
