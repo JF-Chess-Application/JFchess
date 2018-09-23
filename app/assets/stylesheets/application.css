@@ -14,4 +14,6 @@
  *= require_self
  *= require bootstrap-theme.min.css
  *= require bootstrap.min.css
+ *= require jquery-ui
+
  */
