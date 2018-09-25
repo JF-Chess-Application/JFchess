@@ -19,8 +19,8 @@ class PiecesController < ApplicationController
     	new_move_count = @piece.move_count + 1
     	@piece.update_attributes(move_count: new_move_count)
 		else
-			@game = Game.find(@piece.game_id)
-			redirect_to game_path(@game), alert: 'Invalid move. Please try another move.'
+			# @game = Game.find(@piece.game_id)
+			# redirect_to game_path(@game), alert: 'Invalid move. Please try another move.'
 			return
 		end
 	end

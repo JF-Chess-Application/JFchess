@@ -1,5 +1,7 @@
 class King < Piece
-  def valid_move?(x, y)
+  def valid_move?(string_x, string_y)
+    x = string_x.to_i
+    y = string_y.to_i
 
     if self.is_obstructed(x, y)
       return false

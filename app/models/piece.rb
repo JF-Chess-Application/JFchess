@@ -124,11 +124,5 @@ class Piece < ApplicationRecord
       end
 
     end
-    # Move the piece to the designated coordinates
-    self.update_attributes(position_x: x, position_y: y)
-
-    # update the move_count
-    new_move_count = self.move_count + 1
-    self.update_attributes(move_count: new_move_count)
   end
 end
