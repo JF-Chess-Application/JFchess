@@ -29,7 +29,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update_attributes(game_params)   
+    @game.update_attributes(game_params.merge(opponent: current_user.id))
     redirect_to game_path(@game)
   end
 

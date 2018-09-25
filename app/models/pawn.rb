@@ -1,5 +1,7 @@
 class Pawn < Piece
-	def valid_move?(x, y)
+	def valid_move?(string_x, string_y)
+		x = string_x.to_i
+		y = string_y.to_i
 		# if the piece belongs to the white player, moving forward means adding to position_y
 		if color == "white"
 			# if it's a white pawn's first move, it is valid for an unbstructed white pawn to move two spaces forward to position_y + 2
