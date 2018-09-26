@@ -8,7 +8,7 @@ class PiecesController < ApplicationController
 		position_x = params[:position_x]
 		position_y = params[:position_y]
 
-		if !current_user_turn 
+		if !current_user_turn? 
 			render text: 'Please wait your turn',
 			status: :unauthorized
 		else 
