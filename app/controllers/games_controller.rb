@@ -29,7 +29,10 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update_attributes(game_params)   
+    if params[:winner]
+      @game.winner = params[:winner]
+      @game.save
+    end
     redirect_to game_path(@game)
   end
 
