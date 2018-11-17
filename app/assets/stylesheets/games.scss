@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: image_url('snow.png');
 }
 
 .main {
@@ -71,7 +72,35 @@ body {
 }
 
 .img-fit {
+}
+
+.k-box {
+  box-shadow: 10px 10px 22px 0px rgba(184,184,184,1);
+  background: white;
+  padding: 0;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  margin-top: 50px;
+}
+
+.col-lg-8 {
+  padding: 0 !important;
+}
+
+.k-box img {
   object-fit: cover;
   width: 100%;
-  height: 700px;
+  height: 500px;
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+.k-box p {
+  margin: 0 300px 30px 300px;
+  text-align: left;
+}
+
+.k-box input {
+  margin-bottom: 20px;
+  width: 200px;
 }
