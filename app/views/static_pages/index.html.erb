@@ -1,14 +1,47 @@
 <div class="k-box col-lg-offset-2 col-lg-8">
 
-  <%= image_tag "chessboard-home-page.jpg" %>
+  <%= image_tag "chessboard-home-page.jpg", class: "dashboard-image" %>
 
   <div class="text-center">
     <h1>Welcome to JFChess!</h1>
-    <p>
-      Lorem ipsum dolor sit amet, te mundi evertitur expetendis sit, no mazim ridens salutandi vim. Duo dolore evertitur ex. Phaedrum vulputate id vim. Cu agam ipsum qui.Mea id tation graeci. Mel clita phaedrum at. Mucius sapientem an pro, iusto splendide deterruisset vis an. Duo ne esse postea aperiri, oratio discere per ei. Est altera consequat an, malis omnium graecis per et, ne postulant tincidunt ius.
-    </p>
+    <div class="app-summary">
+      <p>
+        JFchess is a game developed by Full-Stack Web Developers interested in honing their skills in an aggressive boot camp educational course called the Firehose Project. Challenge your wits in the age old game of Chess by creating your own game, or finding a game to play with other players around the world.  
+      </p>
+      <p>
+        JFchess is a Ruby on Rails application that demonstrates the usage of:
+      </p>
+      <ul>
+        <li>Javascript</li>
+        <li>Jquery</li>
+        <li>Bootstrap</li>
+        <li>HTML/CSS</li>
+      </ul>
+      <p>
+        Click the Play button to get started!
+      </p>
+    </div>
     <br>
     <%= button_to "PLAY", games_path, {class: 'btn-lg btn-primary'} %>
     <br>
+    <hr>
+
+    <h1>About Us</h1>
+    <div class="profile-card">
+      <%= image_tag "me.jpg", class: "profile-picture" %>
+      <div class="profile-description">
+        <h3>Kyle Noll</h3>
+        <p>A Full-Stack Web Devolper whod oes things and drinks water. In his spare time he eats food and does thingsin the outside with grass and leeaves. Dont ask.</p>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <%= image_tag "#.jpg", class: "profile-picture" %>
+      <div class="profile-description">
+        <h3>Another Person</h3>
+        <p>A Full-Stack Web Devolper whod oes things and drinks water. In his spare time he eats food and does thingsin the outside with grass and leeaves. Dont ask.</p>
+      </div>
+    </div>
+
   </div>
 </div>
