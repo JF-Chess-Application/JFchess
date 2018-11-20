@@ -1,24 +1,43 @@
-# README
+# JFchess
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+JFChess is a online chess game built by an Agile software development team. Under the guidance of a senior software engineer, we had weekly Agile team meetings for code reviews, sprint planning, and feature assignments.
 
-Things you may want to cover:
+In addition to Ruby on Rails, this app demonstrates the usage of: 
+- HTML/CSS
+- Bootstrap
+- Javascript
+- Jquery
+- Devise
 
-* Ruby version
+JFchess was created as part of a remote coding bootcamp called [The Firehose Project](https://thefirehoseproject.com/).
 
-* System dependencies
+## Getting Started
 
-* Configuration
+Clone the app and install the gem files
+```
+$ git clone git@github.com:knoll3/JFchess.git
+$ cd JFchess/
+$ bundle install
+```
+After this you should be good to go!
 
-* Database creation
+## Deployment
+To deploy this app into development 
+```
+$ heroku create choose-app-name
+$ git push heroku master
+```
+View app info
+```
+$ heroku apps:info
+```
+Open the app
+```
+$ heroku open
+```
 
-* Database initialization
+## Versions
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+JFchess uses 
+- Ruby 2.3.4
+- Rails 5.1.6

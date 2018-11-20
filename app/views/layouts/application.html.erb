@@ -15,6 +15,25 @@
   	<% if alert.present? %>
   		<p class="alert alert-danger"><%= alert %></p>
   	<% end %>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">JFChess</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><%= link_to 'Play!', games_path %></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   	
     <%= yield %>
   </body>
