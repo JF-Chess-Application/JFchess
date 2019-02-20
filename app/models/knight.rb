@@ -1,5 +1,7 @@
 class Knight < Piece
-	def valid_move?(x, y)
+	def valid_move?(string_x, string_y)
+		x = string_x.to_i
+		y = string_y.to_i
 		# check validity based on board position - moves off board are invalid. This logic is built into is_obstructed but we aren't calling that method in this subclass
 		if x > 7 || x < 0 || y > 7 || y < 0
 			return false

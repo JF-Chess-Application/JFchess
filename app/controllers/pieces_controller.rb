@@ -13,6 +13,13 @@ class PiecesController < ApplicationController
 		@piece = Piece.find(params[:id])
 		target_x = params[:position_x]
 		target_y = params[:position_y]
-		@piece.update_attributes(position_x: target_x, position_y: target_y)
+		if @piece.valid_move?(target_x, target_y)
+			@piece.update_attributes(position_x: target_x, position_y: target_y)
+    	# update the move_count
+    	new_move_count = @piece.move_count + 1
+    	@piece.update_attributes(move_count: new_move_count)
+		else
+			return
+		end
 	end
 end
