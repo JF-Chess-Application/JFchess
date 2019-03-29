@@ -14,7 +14,12 @@
       <% end %>
     </div>
   </div>
-  <div class="right">Filler</div>
+  <div class="right">
+    <%= button_to "Forfeit", { action: "update" },
+                               method: :put, 
+                               data: { confirm: "Are you sure?"},
+                               params: {winner: get_winner} %>
+  </div>
 </div>
 
 <script>
